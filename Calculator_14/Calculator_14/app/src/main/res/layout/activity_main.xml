@@ -16,21 +16,22 @@
         android:textAlignment="viewEnd"
         android:background="#555555"
         android:textColor="#e5e5e5"
-        android:textSize="100sp"
-        android:fontFamily="@font/nuorder_thin"
-        android:text="123456"/>
+        android:textSize="50sp"
+        android:fontFamily="@font/nuorder_thin" />
 
     <Button
+        style="@style/ButtonStyle025"
         android:id="@+id/_btn07"
         android:background="@drawable/btn_border"
         android:text="7"
-        style="@style/ButtonStyle025"
-        app:layout_constraintTop_toBottomOf="@+id/_textView" />
+        android:onClick="Click"
+        app:layout_constraintTop_toBottomOf="@+id/_textView"/>
 
     <Button
         style="@style/ButtonStyle025"
         android:id="@+id/_btn08"
         android:text="8"
+        android:onClick="Click"
         app:layout_constraintLeft_toRightOf="@+id/_btn07"
         app:layout_constraintTop_toBottomOf="@+id/_textView"
         android:background="@drawable/btn_border"/>
@@ -39,6 +40,7 @@
         style="@style/ButtonStyle025"
         android:id="@+id/_btn09"
         android:text="9"
+        android:onClick="Click"
         app:layout_constraintLeft_toRightOf="@+id/_btn08"
         app:layout_constraintTop_toBottomOf="@+id/_textView"
         android:background="@drawable/btn_border"/>
@@ -56,12 +58,14 @@
         android:id="@+id/_btn04"
         android:background="@drawable/btn_border"
         android:text="4"
+        android:onClick="Click"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/_btn07"/>
 
     <Button
         style="@style/ButtonStyle025"
         android:id="@+id/_btn05"
+        android:onClick="Click"
         app:layout_constraintLeft_toRightOf="@+id/_btn04"
         app:layout_constraintTop_toBottomOf="@+id/_btn08"
         android:background="@drawable/btn_border"
@@ -73,6 +77,7 @@
         android:id="@+id/_btn06"
         android:background="@drawable/btn_border"
         android:text="6"
+        android:onClick="Click"
         app:layout_constraintLeft_toRightOf="@+id/_btn05"
         app:layout_constraintTop_toBottomOf="@+id/_btn09" />
 
@@ -80,6 +85,7 @@
         style="@style/ButtonStyle025"
         android:id="@+id/_btn01"
         android:text="1"
+        android:onClick="Click"
         app:layout_constraintTop_toBottomOf="@+id/_btn04"
         android:background="@drawable/btn_border"/>
 
@@ -87,6 +93,7 @@
         style="@style/ButtonStyle025"
         android:id="@+id/_btn02"
         android:text="2"
+        android:onClick="Click"
         app:layout_constraintLeft_toRightOf="@+id/_btn01"
         app:layout_constraintTop_toBottomOf="@+id/_btn05"
         android:background="@drawable/btn_border"/>
@@ -96,22 +103,24 @@
         style="@style/ButtonStyle025"
         android:id="@+id/_btn03"
         android:text="3"
+        android:onClick="Click"
         app:layout_constraintLeft_toRightOf="@+id/_btn02"
         app:layout_constraintTop_toBottomOf="@+id/_btn06"
         android:background="@drawable/btn_border" />
 
     <Button
-        style="@style/ButtonStyle025"
         android:id="@+id/_btnMultiply"
+        style="@style/ButtonStyle025"
         android:background="@drawable/btn"
-        android:text="×"
+        android:text="x"
         app:layout_constraintLeft_toRightOf="@+id/_btn06"
-        app:layout_constraintTop_toBottomOf="@+id/_btnDivide" />
+        app:layout_constraintTop_toBottomOf="@+id/_btnDivide"/>
 
     <Button
         style="@style/ButtonStyle05"
         android:id="@+id/_btn0"
         android:text="0"
+        android:onClick="Click"
         app:layout_constraintTop_toBottomOf="@+id/_btn01"
         android:background="@drawable/btn_border" />
 
@@ -121,6 +130,7 @@
         android:text="."
         android:textStyle="bold"
         android:textSize="70sp"
+        android:onClick="DocClick"
         app:layout_constraintLeft_toRightOf="@+id/_btn0"
         app:layout_constraintTop_toBottomOf="@+id/_btn03"
         android:background="@drawable/btn_border"/>
