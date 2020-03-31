@@ -58,7 +58,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
             case R.id._btnEqual:
                 Equal();
                 Global.Made=true;
-                Global.StringValue=new StringBuilder(String.valueOf(Global.Total));
                 Global.Integer=true;
                 Global.Type="";
                 break;
@@ -67,8 +66,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void CalculationClick(String type)
     {
         Equal();
-        Global.StringValue=new StringBuilder();
         Global.Type=type;
+        Global.Pressed=true;
         Global.Integer=true;
         Global.Made=false;
         Global.Count =0;
@@ -77,13 +76,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private void Load(){
         Global.Integer=true;
         Global.Made=false;
+        Global.Pressed=false;
         Global.Total =0;
         Global.Type ="";
         Global.Count =0;
-        Global.StringValue=new StringBuilder();
         textView.setText("0");
     }
     private void Equal(){
+        if(Global.Pressed)
+            return;;
         String str=textView.getText().toString();
         if(str.isEmpty())
             return;
@@ -108,27 +109,35 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     public void Click(View view) {
-        Button btn = (Button) view;
-        String buttonText = btn.getText().toString();
-        if(Global.StringValue.length() == 0 && buttonText == "0" && Global.Integer==true) {
-           return;
-        }
         if(Global.Made){
             Load();
         }
-        Global.StringValue.append(buttonText);
-        if(Global.Integer) {
-            Global.Count++;
-            if (Global.Count % 5 == 0) {
-                double value = Double.parseDouble(Global.StringValue.toString());
-                Global.StringValue = new StringBuilder(String.valueOf(value));
-            }
+        if(Global.Pressed)
+            textView.setText("");
+        Global.Pressed=false;
+        Button btn = (Button) view;
+        String buttonNumberText = btn.getText().toString();
+        if(textView.getText().toString()=="0"){
+            if(buttonNumberText == "0" && Global.Integer == true)
+                return;
+            textView.setText("");
         }
-        textView.setText(Global.StringValue);
+        textView.append(buttonNumberText);
+        if(Global.Integer) {
+
+            //tang 5 so kiem tra doi font
+            if (Global.Count % 5 == 0) {
+                double value = Double.parseDouble(textView.getText().toString());
+                //do something
+                textView.setText(String.valueOf(value));
+            }
+            Global.Count++;
+        }
     }
     public void DocClick(View view){
         if(Global.Integer){
             Global.Integer=false;
+            textView.append(".");
         }
     }
 }
