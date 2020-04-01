@@ -2,6 +2,7 @@ package hcmute.edu.vn.calculator_14;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -70,7 +71,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Global.Pressed=true;
         Global.Integer=true;
         Global.Made=false;
-        Global.Count =0;
     }
 
     private void Load(){
@@ -79,7 +79,6 @@ public class MainActivity extends Activity implements View.OnClickListener {
         Global.Pressed=false;
         Global.Total =0;
         Global.Type ="";
-        Global.Count =0;
         textView.setText("0");
     }
     private void Equal(){
@@ -109,29 +108,25 @@ public class MainActivity extends Activity implements View.OnClickListener {
     }
 
     public void Click(View view) {
-        if(Global.Made){
-            Load();
-        }
-        if(Global.Pressed)
-            textView.setText("");
-        Global.Pressed=false;
         Button btn = (Button) view;
         String buttonNumberText = btn.getText().toString();
-        if(textView.getText().toString()=="0"){
+        String log=textView.getText().toString();
+        if(Global.Made){
+            Load();
+            textView.setText(buttonNumberText);
+        }
+        else if(Global.Pressed){
+            textView.setText(buttonNumberText);
+            Global.Pressed=false;
+        }
+        else if(log.equals("0")){
+
             if(buttonNumberText == "0" && Global.Integer == true)
                 return;
-            textView.setText("");
+            textView.setText(buttonNumberText);
         }
-        textView.append(buttonNumberText);
-        if(Global.Integer) {
-
-            //tang 5 so kiem tra doi font
-            if (Global.Count % 5 == 0) {
-                double value = Double.parseDouble(textView.getText().toString());
-                //do something
-                textView.setText(String.valueOf(value));
-            }
-            Global.Count++;
+        else {
+            textView.append(buttonNumberText);
         }
     }
     public void DocClick(View view){
